@@ -41,7 +41,7 @@ public class User implements UserDetails{
     @ElementCollection(targetClass = ERole.class)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<ERole> roles;
+    private Set<ERole> roles = new HashSet<>();
 
     @Transient //поля не учавствующие в сохранении данных
     private Collection<? extends GrantedAuthority> authorities;
