@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@Entity
+@Entity(name="usr")
 public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +39,9 @@ public class User implements UserDetails{
     private LocalDateTime createDate;
 
     @ElementCollection(targetClass = ERole.class)
-    @CollectionTable(name = "user.role", joinColumns = @JoinColumn(name="id"))
-    private Set<ERole> roles = new HashSet<>();
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<ERole> roles;
 
     @Transient //поля не учавствующие в сохранении данных
     private Collection<? extends GrantedAuthority> authorities;
