@@ -3,7 +3,6 @@ package com.lynx.publicApiProvider.security.jwt;
 import com.lynx.publicApiProvider.entity.User;
 import com.lynx.publicApiProvider.security.SecurityConstants;
 import com.lynx.publicApiProvider.service.ConfigUserDetailsService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-public class JWTAuthenticationFilter extends OncePerRequestFilter implements Filter {
+public class JWTAuthenticationFilter extends OncePerRequestFilter{
 
     public static final Logger LOG = LoggerFactory.getLogger(JWTProvider.class);
 
@@ -36,7 +37,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter implements Fil
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain filterChain) throws jakarta.servlet.ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJWTFromRequest(request);
             if (StringUtils.hasText(jwt) && jwtProvider.validToken(jwt)){
@@ -56,15 +57,5 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter implements Fil
         }
 
         filterChain.doFilter(request, response);
-    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
     }
 }
