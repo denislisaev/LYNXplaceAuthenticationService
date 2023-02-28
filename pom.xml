@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lynx</groupId>
-	<artifactId>LYNXplacePublicApiProvider</artifactId>
+	<artifactId>LYNXplaceAuthenticationService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Public API Provider</name>
 	<description>LYNX place</description>
