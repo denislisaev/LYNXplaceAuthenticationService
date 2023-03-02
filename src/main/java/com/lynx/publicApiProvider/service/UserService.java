@@ -55,9 +55,9 @@ public class UserService implements UserServiceInterface {
     public User updateUser(UserDTO userDTO, Principal principal){
         LOG.debug("Update user {}", userDTO.getUsername());
         User user = getUserByPrincipal(principal);
-//        user.setFirstname(userDTO.getFirstname());
-//        user.setLastname(userDTO.getLastname());
-//        user.setLocation(userDTO.getLocation());
+        user.setOzonToken(userDTO.getOzonToken());
+        user.setWildberriesToken(userDTO.getWildberriesToken());
+        user.setEmail(userDTO.getEmail());
 
         try {
             return userRepository.save(user);

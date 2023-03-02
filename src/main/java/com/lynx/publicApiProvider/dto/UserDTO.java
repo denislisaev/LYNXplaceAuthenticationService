@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class UserDTO {
@@ -15,5 +16,8 @@ public class UserDTO {
     private String email;
 
     private LocalDateTime createDate;
+
+    private String ozonToken;
+    private String wildberriesToken;
 }
 

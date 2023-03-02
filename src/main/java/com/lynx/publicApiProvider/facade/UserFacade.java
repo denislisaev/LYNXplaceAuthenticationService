@@ -13,6 +13,8 @@ public class UserFacade {
         userDTO.setUsername(user.getUsername());
         userDTO.setEmail(user.getEmail());
         userDTO.setCreateDate(user.getCreateDate());
+        userDTO.setOzonToken(user.getOzonToken());
+        userDTO.setWildberriesToken(user.getWildberriesToken());
 
         return userDTO;
     }

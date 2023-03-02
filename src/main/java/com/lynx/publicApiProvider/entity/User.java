@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,7 +33,11 @@ public class User implements UserDetails{
     private Boolean isBlocked;
 
     @Column
-    private String ozonApiKey;
+    private String ozonToken;
+
+    @Column
+    private String wildberriesToken;
+
 
     @Column(updatable = false)
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
